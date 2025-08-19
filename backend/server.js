@@ -46,6 +46,16 @@ app.get('/expenses', async (req, res) => {
   }
 });
 
+app.delete('/expenses/:id', async (req, res) => {
+  try {
+    const expense = await Expense.findByIdAndDelete(req.params.id);
+    if (!expense) return res.status(404).json({ message: 'Expense not found' });
+    res.json({ message: 'Expense deleted' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 app.post('/budgets', async (req, res) => {
   try {
     const { category, amount } = req.body;
