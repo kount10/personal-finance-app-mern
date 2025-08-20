@@ -18,6 +18,20 @@ function ExpenseList() {
     }
   };
 
+  const fetchExpenses = () => {
+    axios.get('http://localhost:5000/expenses')
+      .then(res => setExpenses(res.data || []))
+      .catch(err => console.error('Error fetching expenses:', err));
+  };
+
+  const handleDelete = (id) => {
+    axios.delete(`http://localhost:5000/expenses/${id}`)
+      .then(() => {
+        setExpenses(expenses.filter(expense => expense._id !== id));
+      })
+      .catch(err => console.error('Error deleting expense:', err));
+  };
+
   return (
     <div className="card bg-secondary-subtle border-0 shadow-sm h-100 animate__animated animate__fadeInUp">
       <div className="card-body py-3">
