@@ -1,74 +1,57 @@
+/* Supplementary tweaks layered on top of Bootstrap Darkly */
 .App {
-  text-align: center;
-  font-family: Arial, sans-serif;
-}
-
-.App-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
-}
-
-.forms-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-}
-
-.form-container, .table-container, .chart-container, .alerts-container {
-  background-color: #f4f4f4;
-  padding: 20px;
-  border-radius: 8px;
-  margin: 20px auto;
-  max-width: 600px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.form-container input, .form-container select {
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.form-container button {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100%;
-}
-
-.form-container button:hover {
-  background-color: #45a049;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
   text-align: left;
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
 }
 
-th {
-  background-color: #4caf50;
-  color: white;
+.navbar-brand {
+  letter-spacing: 0.5px;
 }
 
-.chart-container {
-  max-width: 400px;
+.card.bg-secondary-subtle {
+  background-color: #2a2f36 !important;
 }
 
-.alert {
-  color: red;
-  font-weight: bold;
+.table-dark.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: rgba(255,255,255,0.02);
 }
+
+/* Smoothen animation appearance */
+.animate__animated {
+  --animate-duration: 600ms;
+}
+
+/* Blurred rotating background */
+.app-bg-slideshow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.app-bg-slideshow .bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px) brightness(0.65);
+  transform: scale(1.08);
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+.app-bg-slideshow .bg-slide.active {
+  opacity: 1;
+}
+
+/* Quote toast */
+.quote-toast {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1055;
+  max-width: 360px;
+}
+
+/* (removed resizable panels) */

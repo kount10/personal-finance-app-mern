@@ -16,9 +16,19 @@ function BudgetAlerts() {
   }).filter(Boolean);
 
   return (
-    <div className="alerts-container">
-      <h2>Budget Alerts</h2>
-      {alerts.length ? alerts.map((alert, i) => <p key={i} className="alert">{alert}</p>) : <p>No alerts</p>}
+    <div className="card bg-secondary-subtle border-0 shadow-sm h-100 animate__animated animate__fadeInUp">
+      <div className="card-body py-3">
+        <h2 className="h5 mb-3">Budget Alerts</h2>
+        {alerts.length ? (
+          <div className="d-flex flex-column gap-2">
+            {alerts.map((alert, i) => (
+              <div key={i} className="alert alert-danger py-2 mb-0 animate__animated animate__shakeX" role="alert">{alert}</div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-secondary mb-0">No alerts</p>
+        )}
+      </div>
     </div>
   );
 }
